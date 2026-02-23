@@ -502,36 +502,6 @@ pip install -r requirements.txt
 
 ---
 
----
-
-## Compatibilité multi-plateforme
-
-### Tableau de compatibilité
-
-| OS | Python | psutil | paramiko | pypsrp | Testé |
-|----|--------|--------|----------|--------|-------|
-| **Windows 10/11** | 3.8+ | ✅ | ✅ | ✅ | ✅ |
-| **Windows Server 2016+** | 3.8+ | ✅ | ✅ | ✅ | ✅ |
-| **Ubuntu 20.04 LTS** | 3.8+ | ✅ | ✅ | ✅ | ✅ |
-| **Ubuntu 22.04 LTS** | 3.10+ | ✅ | ✅ | ✅ | ✅ |
-| **Debian 11** | 3.9+ | ✅ | ✅ | ✅ | ⚠️ Non testé |
-| **RHEL 8/9** | 3.8+ | ✅ | ✅ | ✅ | ⚠️ Non testé |
-
-### Adaptations plateforme
-
-**Windows**:
-- Chemins: `Path()` (pathlib) pour compatibilité
-- Clear screen: `os.system("cls")`
-- EOL: CRLF automatiquement géré par Python
-
-**Linux**:
-- Chemins: `/` natif
-- Clear screen: `os.system("clear")`
-- EOL: LF natif
-- Permissions: `chmod +x` pour exécution directe
-
----
-
 ## Performances et optimisations
 
 ### Benchmarks
@@ -660,6 +630,7 @@ NTL-SysToolbox/
 ├── docs/
 │   ├── TECH.md                    # Ce document
 │   ├── USAGE.md                   # Guide utilisateur
+│   ├── INSTALL.md                 # Guide d'installation
 │   └── LICENCE.md                 # MIT License
 │
 ├── requirements.txt               # Dépendances Python
