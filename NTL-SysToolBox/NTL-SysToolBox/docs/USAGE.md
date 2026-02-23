@@ -1773,6 +1773,17 @@ print(f"Rapport généré: {len(SITES)} sites vérifiés")
 
 ---
 
-**Version:** 1.0.0 
-**Dernière mise à jour:** 2026-02-17  
+## Support et contacts
+
+**Documentation complète:** `docs/USAGE.md`  
+**Architecture technique:** `docs/TECH.md`  
+**Issues GitHub:** `https://github.com/Not-mat-collab/ntl-systoolbox/issues`
+
+---
+
+**Version:** 1.0.0  
+**Date de publication:** 2026-02-23  
 **Auteur:** Équipe MSPR GROUPE 1
+**Client**: Nord Transit Logistics (NTL)  
+**Licence**: MIT License  
+**Contact**: Administrateur Systèmes & Réseaux

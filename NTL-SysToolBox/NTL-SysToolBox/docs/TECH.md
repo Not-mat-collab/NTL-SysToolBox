@@ -1,4 +1,4 @@
-# Documentation Technique - NTL-SysToolbox
+# NTL-SysToolbox - Documentation Technique
 
 ## Architecture globale
 
@@ -673,14 +673,17 @@ NTL-SysToolbox/
 
 ---
 
-## Auteur et maintenance
+## Support et contacts
 
-**Développeur**: Équipe MSPR GROUPE 1 2026  
+**Documentation complète:** `docs/USAGE.md`  
+**Architecture technique:** `docs/TECH.md`  
+**Issues GitHub:** `https://github.com/Not-mat-collab/ntl-systoolbox/issues`
+
+---
+
+**Version:** 1.0.0  
+**Date de publication:** 2026-02-23  
+**Auteur:** Équipe MSPR GROUPE 1
 **Client**: Nord Transit Logistics (NTL)  
 **Licence**: MIT License  
 **Contact**: Administrateur Systèmes & Réseaux
-
-**Support**:
-- Issues GitHub: `https://github.com/Not-mat-collab/ntl-systoolbox`
-- Documentation: `docs/`
-- Logs: `backups/{module}/`

@@ -941,4 +941,7 @@ python src\module3_audit.py 2>&1 | Tee-Object debug.log
 
 **Version:** 1.0.0  
 **Date de publication:** 2026-02-23  
-**Auteur:** Équipe MSPR ASRBD - Administrateur Systèmes & Réseaux NTL
+**Auteur:** Équipe MSPR GROUPE 1
+**Client**: Nord Transit Logistics (NTL)  
+**Licence**: MIT License  
+**Contact**: Administrateur Systèmes & Réseaux
