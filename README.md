@@ -667,50 +667,6 @@ Résumé:
    - `_analyze_components(components)` → Calcul statistiques
    - `_generate_text_report()` / `_generate_csv_report()` / `_generate_json_report()`
 
-### Cas d'usage DSI NTL
-
-**Scénario 1 : Audit annuel obligatoire**
-```bash
-# Audit complet infrastructure NTL (4 sites)
-python src/module3_audit.py
-> 1 (Scanner une plage réseau)
-> Plage IP: 10.5.60.0/24  # Siège Lille
-# Répéter pour 20.0/24, 30.0/24, 40.0/24 (autres sites)
-
-# Génération rapport consolidé pour direction
-# → Identification: 12 serveurs Windows Server 2012 R2 en EOL
-# → Recommandation: Plan de migration vers 2022 Q3 2026
-```
-
-**Scénario 2 : Validation post-migration**
-```bash
-# Avant migration: Export inventaire
-python src/module3_audit.py
-> 1 (Scanner)
-> Plage IP: 10.5.60.0/24
-> CSV: o → pre_migration_2026-02.csv
-
-# Après migration: Nouveau scan
-> CSV: o → post_migration_2026-03.csv
-
-# Comparaison: Vérifier disparition serveurs EOL
-```
-
-**Scénario 3 : Intégration inventaire existant GLPI**
-```bash
-# Export GLPI → CSV
-# Colonnes: ip, hostname, os_family, os_version
-
-# Import dans NTL-SysToolbox
-python src/module3_audit.py
-> 3 (Analyser un fichier CSV)
-> Chemin: ./export_glpi_2026-02.csv
-> Format rapport: [1] TXT
-
-# Rapport généré avec statuts EOL enrichis
-# → Permet qualification risque sans nouveau scan réseau
-```
-
 ---
 
 ## 📝 Cas d'usage DSI NTL
@@ -867,34 +823,6 @@ set MYSQL_ROOT_PASS=root_password
 
 ---
 
-## 🛠️ Développement & Contribution
-
-### Structure de développement
-
-```bash
-# Cloner en mode développement
-git clone https://github.com/Not-mat-collab/ntl-systoolbox.git
-cd ntl-systoolbox
-
-# Créer une branche feature
-git checkout -b feature/nouveau-module
-
-# Tests unitaires (si disponibles)
-pytest tests/
-
-# Commit avec convention
-git commit -m "feat(module3): Ajout détection CentOS Stream"
-git push origin feature/nouveau-module
-```
-
-### Conventions de code
-
-- **Python** : PEP 8, type hints, docstrings
-- **Commits** : Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`)
-- **Branches** : `main` (stable), `develop` (intégration), `feature/*`, `fix/*`
-
----
-
 ## 📚 Documentation complète
 
 - **[INSTALL.md](docs/INSTALL.md)** - Procédure installation DSI complète
@@ -916,6 +844,67 @@ git push origin feature/nouveau-module
 
 ---
 
+## 🛠️ Développement & Contribution
+
+### Structure Git
+
+```
+main (stable, releases tagged)
+  ├── v1 (tag)
+  ├── v2 (tag)
+  ├── v3 (tag)
+  ├── v4 (tag)
+  ├── v5 (tag)
+  ├── v6 (tag)
+  ├── v7 (tag)
+  ├── v8 (tag)
+  ├── v9 (tag)
+  └── v10 (tag)
+module-1-diagnostique
+  ├── module1_diagnostique.py
+  └── requirements.txt
+module-2-backups_wms
+  ├── module2_wms_backup.py
+  └── requirements.txt
+module-3-audit
+  ├──module3_audit.py
+  └── requirements.txt
+```
+
+### Workflow contribution
+
+```bash
+# 1. Créer branche feature
+git checkout dev
+git pull origin dev
+git checkout -b feature/ma-nouvelle-fonction
+
+# 2. Développer + tester
+# ... code ...
+python -m pytest tests/
+
+# 3. Commit
+git add .
+git commit -m "feat(diagnostic): Ajout vérification réplication AD"
+
+# 4. Push + Pull Request
+git push origin feature/ma-nouvelle-fonction
+# Créer PR sur GitHub/GitLab vers 'dev'
+
+# 5. Après validation, merge dans dev
+# 6. Release : merge dev → main + tag version
+```
+
+### Conventions commits
+- `feat(module):` Nouvelle fonctionnalité
+- `fix(module):` Correction bug
+- `docs:` Documentation
+- `test:` Tests
+- `refactor:` Refactorisation sans changement fonctionnel
+- `chore:` Maintenance (dépendances, config)
+
+---
+
 ## 📄 Licence
 
 **MIT License**
@@ -934,11 +923,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Ce projet s'inscrit dans le cadre de la **MSPR (Mise en Situation Professionnelle Reconstituée)** du bloc **E6.1 - Concevoir et tester des solutions applicatives** du programme **Administrateur Systèmes, Réseaux et Bases de Données (ASRBD)** à l'**EPSI**.
 
-**Version** : 12.0.0   
-**Année universitaire** : 2025-2026  
-**Équipe** : MSPR-B3-GRP1  
+**Version** : 1.0.0   
+**Année universitaire** : 2026-02-23   
+**Équipe** : MSPR-B3-GROUPE 1  
+**Client**: Nord Transit Logistics (NTL)  
+**Licence**: MIT License 
+**Contact**: Administrateur Systèmes & Réseaux
 **Durée** : 19 heures de préparation + soutenance orale (50 min) 
 **Repository** : https://github.com/Not-mat-collab/ntl-systoolbox
+
 ---
 
 <div align="center">
