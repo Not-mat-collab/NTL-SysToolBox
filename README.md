@@ -1,4 +1,4 @@
-# NTL-SysToolbox 🚀
+# NTL-SysToolbox
 
 **NTL-SysToolbox** est un outil en ligne de commande multi-plateforme (**Windows** / **Linux**) conçu pour **Nord Transit Logistics (NTL)**. Il industrialise les vérifications d'exploitation, sécurise la gestion des sauvegardes WMS et produit un audit d'obsolescence réseau.
 
