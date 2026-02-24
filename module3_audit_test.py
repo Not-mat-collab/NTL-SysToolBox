@@ -42,12 +42,12 @@ class NetworkScanner:
             self.nm.scan(hosts=ip_range, arguments=args_base)
             except Exception as e:
                 print("Erreur scan principal : " + str(e))
-                try:
-                    self.nm.scan(hosts=ip_range, arguments="-sT -sV -sn -p " + ports)
-                except Exception as e2:
-                    print("Erreur fallback : " + str(e2))
-                    hosts = self.simple_ping_scan(ip_range)
-                    return hosts
+            try:
+                self.nm.scan(hosts=ip_range, arguments=args_base)
+            except Exception as e:
+                print("Erreur scan : " + str(e))
+                hosts = self.simple_ping_scan(ip_range)
+                return hosts
     
         for host in self.nm.all_hosts():
             host_info = {
