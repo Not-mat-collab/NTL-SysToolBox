@@ -1,4 +1,4 @@
-# NTL-SysToolbox - Procédure d'Installation DSI
+# NTL-SysToolbox - Procédure d'Installation
 
 ## Vue d'ensemble
 
