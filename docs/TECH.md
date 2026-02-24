@@ -346,66 +346,13 @@ sudo apt install nmap
 nmap --version
 ```
 
-### Base de données EOL
+### Base de données EOL via API
 
-La base EOL est **statique** et **intégrée au code** (dictionnaire Python). Mise à jour manuelle nécessaire.
+La base EOL est **dynamiqye** et non **intégrée au code** . Mise à jour manuelle non nécessaire.
 
-**Structure complète** :
-
-```python
-eol_data = {
-    'Windows': {
-        'Windows 11': {
-            'release_date': date(2021, 10, 5),
-            'eol_date': None,  # Support continu
-            'eol_extended_date': None,
-            'status': 'supported'
-        },
-        'Windows 10': {
-            'release_date': date(2015, 7, 29),
-            'eol_date': date(2025, 10, 14),  # Mainstream
-            'eol_extended_date': date(2026, 10, 13),  # Extended
-            'status': 'soon_eol'
-        },
-        'Windows Server 2022': {...},
-        'Windows Server 2019': {...},
-        'Windows Server 2016': {...},
-        'Windows Server 2012 R2': {...},
-        'Windows Server 2012': {...},
-        'Windows Server 2008 R2': {...}
-    },
-    'Linux': {
-        'Ubuntu 24.04': {...},
-        'Ubuntu 22.04': {...},
-        'Ubuntu 20.04': {...},
-        'Ubuntu 18.04': {...},
-        'Debian 12': {...},
-        'Debian 11': {...},
-        'Debian 10': {...},
-        'Debian 9': {...},
-        'CentOS 9': {...},
-        'CentOS 8': {...},
-        'CentOS 7': {...},
-        'RHEL 9': {...},
-        'RHEL 8': {...},
-        'RHEL 7': {...}
-    },
-    'macOS': {
-        'macOS 14': {...},  # Sonoma
-        'macOS 13': {...},  # Ventura
-        'macOS 12': {...},  # Monterey
-        'macOS 11': {...}   # Big Sur
-    }
-}
-```
 
 **Sources officielles** :
-- Windows: https://learn.microsoft.com/en-us/lifecycle/products/
-- Ubuntu: https://wiki.ubuntu.com/Releases
-- Debian: https://wiki.debian.org/DebianReleases
-- CentOS: https://wiki.centos.org/About/Product
-- RHEL: https://access.redhat.com/support/policy/updates/errata
-- macOS: https://support.apple.com/en-us/HT201222
+- https://endoflife.date
 
 ---
 
