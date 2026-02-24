@@ -1111,7 +1111,7 @@ Total de composants: {analysis['total']}
         return report
     
     def _save_report(self, content: str, output_path: str, format: str):
-        audit_dir = Path("backups\audit")
+        audit_dir = Path("backups/audit")
         audit_dir.mkdir(exist_ok=True, parents=True)
       
         path = Path(output_path)
@@ -1129,7 +1129,7 @@ Total de composants: {analysis['total']}
 
 
 def scan_network(ip_range: str, output_csv: str = None):
-    audit_dir = Path("backups\audit")
+    audit_dir = Path("backups/audit")
     audit_dir.mkdir(exist_ok=True)
 
     # Puis pour les exports :
@@ -1296,7 +1296,7 @@ def list_os_versions(os_family: str):
 
 
 def process_csv(csv_path: str, output_report: str = None, format: str = 'txt'):
-    audit_dir = Path("backups\audit")
+    audit_dir = Path("backups/audit")
     audit_dir.mkdir(exist_ok=True)
 
     # Puis pour les exports :
@@ -1502,5 +1502,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
