@@ -380,9 +380,9 @@ Fournir un inventaire réseau automatisé et qualifier le statut de support/EOL 
 
 **Niveau de confiance** : Haute/Moyenne/Faible selon méthode de détection
 
-#### 3. Base de données EOL intégrée
+#### 3. Base de données EOL via API
 
-**Couverture complète** :
+**Couverture complète et en temps réel** :
 - **Windows** : 
   - Windows 10 → EOL mainstream : 14/10/2025, Extended : 13/10/2026
   - Windows 11 → Support actif
@@ -398,17 +398,8 @@ Fournir un inventaire réseau automatisé et qualifier le statut de support/EOL 
 
 - **macOS** : Big Sur (EOL), Monterey (EOL proche), Ventura/Sonoma (support actif)
 
-**Structure base EOL** :
-```python
-{
-  "Windows 10": {
-    "release_date": "2015-07-29",
-    "eol_date": "2025-10-14",         # Mainstream
-    "eol_extended_date": "2026-10-13", # Extended Support
-    "status": "soon_eol"
-  }
-}
-```
+**Réference de la base EOL**
+'https://endoflife.date'
 
 #### 4. Import/Export CSV
 
