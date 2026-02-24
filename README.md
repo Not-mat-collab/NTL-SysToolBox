@@ -399,7 +399,7 @@ Fournir un inventaire réseau automatisé et qualifier le statut de support/EOL 
 - **macOS** : Big Sur (EOL), Monterey (EOL proche), Ventura/Sonoma (support actif)
 
 **Réference de la base EOL**
-'https://endoflife.date'
+`https://endoflife.date`
 
 #### 4. Import/Export CSV
 
