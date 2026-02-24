@@ -25,40 +25,48 @@ class NetworkScanner:
     def __init__(self):
         self.nm = nmap.PortScanner()
         
-    def scan_range(self, ip_range: str, ports: str = "22,80,443,3389,135,139,445") -> List[Dict]:
-        print(f"Scan de la plage réseau {ip_range}")
-        print("Cela peut prendre quelques minutes...")
-        hosts = []
-        
-        is_linux = platform.system().lower() == 'linux'
-        is_root = os.geteuid() == 0 if is_linux else True  # Sur Windows, assume admin si ça passe
-        
-        scan_args = f"-sT -O --osscan-limit -p {ports}" if not is_root else f"-sS -O --osscan-limit -p {ports}"
-        
-        try:
-            self.nm.scan(hosts=ip_range, arguments=scan_args)
-        except:
-            # Fallback vers ping scan si échec
-            self.nm.scan(hosts=ip_range, arguments=f"-sT -O --osscan-guess -p {ports}")
-        
-    # Reste du code inchangé...
+def scan_range(self, ip_range: str, ports: str = "22,80,443,3389,135,139,445") -> List[Dict]:
+    print(f"Scan de la plage réseau {ip_range}")
+    print("Cela peut prendre quelques minutes...")
+    hosts = []
 
-            for host in self.nm.all_hosts():
-                host_info = {
-                    'ip': host,
-                    'hostname': self._get_hostname(host),
-                    'state': self.nm[host].state(),
-                    'mac': self._get_mac_address(host),
-                    'vendor': self._get_vendor(host),
-                    'open_ports': self._get_open_ports(host),
-                    'os_info': self._get_os_info(host)
-                }
-                hosts.append(host_info)
-                print(f"  Hôte détecté: {host} ({host_info['hostname']})")
-        except Exception as e:
-            print(f"Erreur lors du scan: {e}")
-            hosts = self._simple_ping_scan(ip_range)
-        return hosts
+    # Détection plateforme/privilèges
+    is_linux = platform.system().lower() == 'linux'
+    is_root = os.geteuid() == 0 if is_linux else True
+
+    # Args adaptatifs
+    if is_root:
+        scan_args = f"-sS -O --osscan-limit -p {ports}"
+    else:
+        scan_args = f"-sT -O --osscan-limit -p {ports}"
+        print("⚠️ Mode non-root: scan TCP (-sT), OS detection réduite.")
+
+    try:
+        self.nm.scan(hosts=ip_range, arguments=scan_args)
+    except Exception as e1:
+        print(f"Premier scan échoué: {e1}")
+        try:
+            fallback_args = scan_args.replace('--osscan-limit', '--osscan-guess')
+            self.nm.scan(hosts=ip_range, arguments=fallback_args)
+        except Exception as e2:
+            print(f"Fallback échoué: {e2}")
+            hosts = self.simple_ping_scan(ip_range)
+            return hosts
+
+    for host in self.nm.all_hosts():
+        host_info = {
+            'ip': host,
+            'hostname': self.get_hostname(host),
+            'state': self.nm[host].state(),
+            'mac': self.get_mac_address(host),
+            'vendor': self.get_vendor(host),
+            'open_ports': self.get_open_ports(host),
+            'os_info': self.get_os_info(host)
+        }
+        hosts.append(host_info)
+        print(f"Hôte détecté: {host} ({host_info['hostname']})")
+
+    return hosts
     
     def _get_hostname(self, ip: str) -> str:
         try:
