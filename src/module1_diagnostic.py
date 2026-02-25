@@ -582,7 +582,7 @@ class DiagnosticModule:
                 if 'details' in check:
                     details = check['details']
                     if 'mode' in details:
-                        mode_text = "🌐 Distant" if details['mode'] == 'remote' else "💻 Local"
+                        mode_text = "🌐 Distant" if details['mode'] == 'remote' else "Local"
                         output.append(f"  Mode: {mode_text}")
                     if 'os_version' in details:
                         output.append(f"  OS: {details['os_version']}")
