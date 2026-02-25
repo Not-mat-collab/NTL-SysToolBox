@@ -128,7 +128,7 @@ class DiagnosticModule:
         return check_result
 
     def check_windows_server(self, hostname=None, remote_ip=None, username=None, password=None):
-        """Vérifie les ressources d'un serveur Windows (local ou distant)"""
+        """Vérifie les ressources d'un serveur Windows (local ou )"""
         check_result = {
             "type": "Windows_Server",
             "hostname": hostname if hostname else platform.node(),
@@ -301,7 +301,7 @@ class DiagnosticModule:
         return check_result
 
     def check_ubuntu_server(self, hostname=None, remote_ip=None, username=None, password=None):
-        """Vérifie les ressources d'un serveur Ubuntu (local ou distant)"""
+        """Vérifie les ressources d'un serveur Ubuntu (local ou )"""
         check_result = {
             "type": "Ubuntu_Server",
             "hostname": hostname if hostname else platform.node(),
@@ -578,11 +578,11 @@ class DiagnosticModule:
             elif check['type'] in ['Windows_Server', 'Ubuntu_Server']:
                 output.append(f"  Hostname: {check['hostname']}")
                 if check.get('remote_ip'):
-                    output.append(f"  IP distante: {check['remote_ip']}")
+                    output.append(f"  IP e: {check['remote_ip']}")
                 if 'details' in check:
                     details = check['details']
                     if 'mode' in details:
-                        mode_text = "🌐 Distant" if details['mode'] == 'remote' else "Local"
+                        mode_text = "Distant" if details['mode'] == 'remote' else "Local"
                         output.append(f"  Mode: {mode_text}")
                     if 'os_version' in details:
                         output.append(f"  OS: {details['os_version']}")
